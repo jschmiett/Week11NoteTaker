@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const db = require('./db/db.json');
+const uuid = require('./helpers/uuid')
 const util = require('util');
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
@@ -39,8 +40,23 @@ app.post('/api/notes', (request, response) => {
             console.log(request.body);
             console.log(request.body.title);
             console.log(request.body.text);
+            const newNoteId =
 
-        })
+
+            // Destructuring assignment for the items in req.body
+            const { title, review } = req.body;
+
+            // If all the required properties are present
+            if (product && review && username) {
+                // Variable for the object we will save
+                const newReview = {
+                    product,
+                    review,
+                    username,
+                    review_id: uuid(),
+                };
+
+            })
     //append new note to the request body
     //     newNote = body.append(notes)
     // res.send($newNote)
