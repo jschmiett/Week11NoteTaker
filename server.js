@@ -36,12 +36,17 @@ app.post('/api/notes', (request, response) => {
         .then((data) => {
             console.log(data);
             const noteArray = JSON.parse(data);
-            console.log(noteArray);
-            console.log(request.body);
-            console.log(request.body.title);
-            console.log(request.body.text);
-            const newNoteId = uuidv4()
-            console.log(newNoteId);
+            noteArray.push(request.body);
+            //stringify noteArray with newNote added back into a JSON string
+            const notes = JSON.stringify(noteArray);
+            //write string to a file
+            writeFile('./db/db.json', notes)
+                .then((data) => {
+                    response.json(request.body);
+                })
+
+            // const newNoteId = uuidv4()
+
         })
 });
 //append new note to the request body
