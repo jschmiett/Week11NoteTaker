@@ -49,10 +49,6 @@ app.post('/api/notes', (request, response) => {
 
         })
 });
-//append new note to the request body
-//     newNote = body.append(notes)
-// res.send($newNote)
-
 
 //HTML Route GET /notes to return notes.html
 app.get('/notes', (request, response) => {
